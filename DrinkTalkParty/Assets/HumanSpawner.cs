@@ -6,6 +6,7 @@ public class HumanSpawner : MonoBehaviour {
 
     public Color[] skins;
     public Color[] hair;
+    public Color[] shirts;
     public int humans;
     public Transform human;
     public Vector3[] startPoints;
@@ -52,6 +53,13 @@ public class HumanSpawner : MonoBehaviour {
                 newHuman.Find("body").Find("left-upper-arm").GetComponent<SpriteRenderer>().color = skinColour;
                 newHuman.Find("body").Find("left-upper-arm").Find("left-lower-arm").GetComponent<SpriteRenderer>().color = skinColour;
                 newHuman.Find("body").Find("left-upper-arm").Find("left-lower-arm").Find("left-hand").GetComponent<SpriteRenderer>().color = skinColour;
+
+                // colour hair
+
+                // Colour shirt
+                Color shirtColour = shirts[Random.Range(0, shirts.Length)];
+                newHuman.Find("body").Find("body-armor").GetComponent<SpriteRenderer>().color = shirtColour;
+
 
 
                 // ensure the layer drawing works appropriately
