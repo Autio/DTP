@@ -15,8 +15,11 @@ public class HumanSpawner : MonoBehaviour {
     int layer3 = 0;
     public List<Transform> humanList = new List<Transform>();
     private float timer;
+
+    private GameController gameController;
 	// Use this for initialization
 	void Start () {
+        gameController = GameObject.Find("Main Camera").GetComponent<GameController>();
             timer = humans / 9; 
             StartCoroutine(SpawnHuman());
     
@@ -55,6 +58,10 @@ public class HumanSpawner : MonoBehaviour {
                 newHuman.Find("body").Find("left-upper-arm").Find("left-lower-arm").Find("left-hand").GetComponent<SpriteRenderer>().color = skinColour;
 
                 // colour hair
+                Color hairColour = hair[Random.Range(0, hair.Length)];
+                newHuman.Find("body").Find("head").Find("front-hair").GetComponent<SpriteRenderer>().color = hairColour;
+                newHuman.Find("body").Find("head").Find("back-hair").GetComponent<SpriteRenderer>().color = hairColour;
+
 
                 // Colour shirt
                 Color shirtColour = shirts[Random.Range(0, shirts.Length)];
@@ -101,8 +108,8 @@ public class HumanSpawner : MonoBehaviour {
                     human.Find("body").Find("left-upper-leg").Find("left-lower-leg").GetComponent<SpriteRenderer>().sortingOrder = layer3;
                     human.Find("body").Find("left-upper-leg").GetComponent<SpriteRenderer>().sortingOrder = layer3;
 
-               // human.Find("body").Find("left-upper-arm").Find("left-lower-arm").Find("left-hand").GetComponent<SpriteRenderer>().sortingOrder = layer3;
-
+                // human.Find("body").Find("left-upper-arm").Find("left-lower-arm").Find("left-hand").GetComponent<SpriteRenderer>().sortingOrder = layer3;
+               
 
                 layer1 -= 3;
                     layer2 -= 3;
