@@ -7,6 +7,7 @@ public class HumanSpawner : MonoBehaviour {
     public Color[] skins;
     public Color[] hair;
     public Color[] shirts;
+	public Color[] eyes;
     public int humans;
     public Transform human;
     public Vector3[] startPoints;
@@ -62,7 +63,11 @@ public class HumanSpawner : MonoBehaviour {
                 newHuman.Find("body").Find("head").Find("front-hair").GetComponent<SpriteRenderer>().color = hairColour;
                 newHuman.Find("body").Find("head").Find("back-hair").GetComponent<SpriteRenderer>().color = hairColour;
 
-
+				// colour eyes
+				Color eyeColour = eyes[Random.Range(0, eyes.Length)];
+				newHuman.Find("body").Find("head").Find("left-eye").GetComponent<SpriteRenderer>().color = eyeColour;
+				newHuman.Find("body").Find("head").Find("right-eye").GetComponent<SpriteRenderer>().color = eyeColour;
+				
                 // Colour shirt
                 Color shirtColour = shirts[Random.Range(0, shirts.Length)];
                 newHuman.Find("body").Find("body-armor").GetComponent<SpriteRenderer>().color = shirtColour;
@@ -110,6 +115,10 @@ public class HumanSpawner : MonoBehaviour {
 
                 // human.Find("body").Find("left-upper-arm").Find("left-lower-arm").Find("left-hand").GetComponent<SpriteRenderer>().sortingOrder = layer3;
                
+                if(Random.Range(1,10) < 5)
+                {
+                    newHuman.Find("body").Find("head").Find("back-hair").gameObject.SetActive(false);
+                }
 
                 layer1 -= 3;
                     layer2 -= 3;

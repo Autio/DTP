@@ -19,7 +19,11 @@ public class Drink : MonoBehaviour {
         if (collision.transform.name == "Note")
         {
             if(Random.Range(0,10) < 5)
-            {/*
+            {
+				
+				 this.transform.GetComponent<Rigidbody>().AddExplosionForce(2, collision.transform.position,0.5f);
+				
+				/*
                 Debug.Log("hit!");
 
                 // destroy glass (only glass)
